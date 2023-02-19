@@ -10,6 +10,7 @@ function stackFunction(command) {
         if ((command[i] === 'pop' || command[i] === 'back') && arr.length === 0) {
             console.log ('error')
             i++
+            continue
         }
 
         if (command[i].includes('push')) {
@@ -38,7 +39,6 @@ function stackFunction(command) {
 
         i++
     }
-
 }
 
 stackFunction(fileContent)
