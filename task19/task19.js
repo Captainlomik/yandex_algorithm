@@ -3,7 +3,7 @@ let fileContent = fs.readFileSync('input.txt', 'utf8').trim().toString().split(/
 let heap = []
 
 
-function insert(elem) { 
+function insert(elem) {
     heap.push(+elem)
     let index = heap.length - 1
 
@@ -13,16 +13,21 @@ function insert(elem) {
     }
 }
 
-function extract() { 
-    let root = heap.shift()
-    heap.unshift(heap.at(-1))
-    heap.pop()
+function extract() {
+    let root = heap[0]
+
+    if (heap.length === 1) {
+        heap.pop()
+    }
+    else {
+        heap[0] = heap.pop()
+    }
 
     heapify(0)
     return root
 }
 
-function heapify(index) { 
+function heapify(index) {
     let left = leftChild(index)
     let right = rightChild(index)
     let smallest = index
@@ -42,15 +47,12 @@ function heapify(index) {
 }
 
 function swap(indexOne, indexTwo) {
-    const tmp = heap[indexOne];
-    heap[indexOne] = heap[indexTwo];
-    heap[indexTwo] = tmp;
-    return heap
+    [heap[indexOne], heap[indexTwo]] = [heap[indexTwo], heap[indexOne]]
 }
 
-function leftChild(index) {return  index * 2 + 1 };
+function leftChild(index) { return index * 2 + 1 };
 function rightChild(index) { return index * 2 + 2 }
-function parent(index) {return  Math.floor((index - 1) / 2); }
+function parent(index) { return Math.floor((index - 1) / 2); }
 
 
 function maxHeap(num) {
@@ -61,6 +63,7 @@ function maxHeap(num) {
         }
         if (num[i] == '1') console.log(extract())
     }
+
 }
 
 maxHeap(fileContent)
