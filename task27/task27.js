@@ -3,7 +3,6 @@ let fileContent = fs.readFileSync('input.txt', 'utf8').trim().toString().split(/
 
 let arrMatrix = []
 let dp = []
-let info = ''
 
 function way(n, m, arr) {
     for (let i = 1; i <= n; i++) {
