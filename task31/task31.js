@@ -39,7 +39,7 @@ function createGraph() {
 
 
 function find__coords() {
-    if (ribsCount === 0 || !graph.has(1)) return 1 + '\n' + 1
+    if(ribsCount === 0 || !graph.has(1)) return 1 + '\n' + 1
 
     dfs(1)
 
